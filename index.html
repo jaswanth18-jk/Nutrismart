@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NutriSmart - Eat Smart. Live Healthy. End Malnutrition.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Poppins',sans-serif;margin:0;padding:0}
+:root{--g:#16833B;--dg:#075B2A;--mint:#eefaf1;--light:#f7fdf8}
+body{background:var(--light);color:#1a2b1f;line-height:1.6}
+header{position:sticky;top:0;z-index:99;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 5%;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.logo{font-weight:800;font-size:24px;color:var(--g)} .logo span{color:var(--dg)}
+nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+nav a{color:#333;text-decoration:none;font-weight:600;font-size:14px}
+nav a:hover{color:var(--g)}
+.menu-toggle{display:none;background:#fff;border:1px solid #dcebe0;color:var(--dg);font-size:22px;border-radius:10px;padding:5px 12px;cursor:pointer}
+@media(max-width:900px){
+header{flex-wrap:wrap;gap:10px}
+nav{order:3;width:100%;display:none;flex-direction:column;align-items:stretch;gap:0;padding:8px 0}
+nav.open{display:flex}
+nav a{padding:10px 4px;border-top:1px solid #edf3ee}
+.menu-toggle{display:inline-block}
+header>.btn{margin-left:auto}
+}
+@media(max-width:700px){
+.hero h1{font-size:32px}
+.hero{padding:36px 5%}
+section{padding:28px 5%}
+h2{font-size:24px}
+.flex{display:block}
+.box{margin-bottom:12px}
+table{display:block;overflow-x:auto;white-space:nowrap}
+}
+.btn{background:var(--g);color:#fff!important;padding:11px 22px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-block;border:0;cursor:pointer}
+.btn:hover{background:var(--dg)}
+.btn2{background:#fff;color:var(--g)!important;border:2px solid var(--g)}
+.hero{background:linear-gradient(120deg,var(--dg),var(--g));color:#fff;padding:50px 5%;border-radius:0 0 28px 28px;display:flex;gap:30px;flex-wrap:wrap;align-items:center}
+.hero h1{font-size:42px;line-height:1.1}
+.hero p{margin:14px 0;opacity:.95}
+.badge{background:#fff;color:var(--g);padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px;display:inline-block}
+section{padding:36px 5%;max-width:1200px;margin:auto}
+h2{font-size:28px;color:var(--dg);margin-bottom:8px}
+.sub{color:#555;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.06);cursor:pointer;border:1px solid #e8f5ec}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.09)}
+.card:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f0b429;outline-offset:2px}
+.card h3{color:var(--dg)}
+.pill{display:inline-block;background:var(--mint);color:var(--g);padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;margin:4px 2px}
+input,select,textarea{width:100%;padding:12px;border:1.5px solid #ddd;border-radius:12px;margin:6px 0;font-size:15px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}
+th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;font-size:14px}
+th{background:var(--g);color:#fff}
+.flex{display:flex;gap:14px;flex-wrap:wrap}
+.box{flex:1;min-width:260px;background:#fff;padding:18px;border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.stat{font-size:32px;font-weight:800;color:var(--g)}
+.note{background:#fff8d6;padding:12px;border-radius:12px;font-size:13px;margin-top:12px}
+footer{background:var(--dg);color:#fff;padding:30px 5%;text-align:center;margin-top:20px}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">🥦 Nutri<span>Smart</span></div>
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">☰</button>
+<nav id="mainNav">
+<a href="#home">Home</a>
+<a href="#foods">Know Your Food</a>
+<a href="#compare">Compare</a>
+<a href="#planner">Meal Planner</a>
+<a href="#substitute">Substitution</a>
+<a href="#tracker">Tracker</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+<a class="btn" href="#foods">Explore Your Food</a>
+</header>
+
+<div class="hero" id="home">
+<div style="flex:1.2">
+<span class="badge">SDG 2 • ZERO HUNGER</span>
+<h1>Eat Smart.<br>Live Healthy.<br>End Malnutrition.</h1>
+<p><b>Turning Everyday Food into Better Nutrition.</b><br>
+Malnutrition has many causes, including food access, affordability, health and dietary diversity. Limited nutrition awareness can also make it harder to choose a varied diet. Many college and hostel students eat familiar foods without knowing the nutrients they provide.</p>
+<p><b>Our Solution:</b> NutriSmart helps you discover nutrients in familiar Indian foods, compare affordable alternatives, plan budget-friendly meals & improve awareness.</p>
+<a class="btn" style="background:#fff;color:var(--g)" href="#foods">Explore Your Food →</a>
+</div>
+<div style="flex:.8;background:#fff;color:#222;border-radius:20px;padding:20px">
+<h3>🎯 Problem Statement</h3>
+<p>Some students may not know which everyday foods provide nutrients such as iron, vitamin A, zinc and folate. This awareness gap is not the only cause of malnutrition.</p>
+<h3 style="margin-top:12px">👀 Our Observation</h3>
+<p>Our project observation: some hostel students choose food mainly by taste and price, with limited attention to nutrient content. Support this observation with a student survey before making population-wide claims.</p>
+<div class="note">Students don't always need expensive food to make better choices. They need to understand nutrition in everyday food around them.</div>
+</div>
+</div>
+<section>where nutrition awareness is limited.</p></div>
+</div>
+</section>
+
+<section id="hidden-hunger">
+<h2>🌱 Understand Hidden Hunger</h2>
+<p class="sub">Hidden hunger refers to inadequate intake of essential vitamins and minerals, even when someone gets enough calories.</p>
+<div class="grid">
+<div class="card"><h3>Iron</h3><p>Helps the body make haemoglobin. Sources include pulses, millets, leafy vegetables and meat.</p></div>
+<div class="card"><h3>Vitamin A</h3><p>Supports normal vision and immune function. Sources include orange-coloured vegetables, some fruits and leafy greens.</p></div>
+<div class="card"><h3>Zinc</h3><p>Supports growth, immunity and wound healing. Sources include pulses, nuts, seeds and animal foods.</p></div>
+<div class="card"><h3>Folate</h3><p>Helps the body make DNA and red blood cells. Sources include green leafy vegetables and pulses.</p></div>
+</div>
+<p class="note">Food sources contribute differently and absorption varies. This is educational information, not a diagnosis or treatment plan.</p>
+</section>
+
+<section>
+<h2>4 Main Features</h2>
+<div class="grid">
+<div class="card" onclick="location.hash='#foods'"><h3>1. Know Your Food</h3><p>Discover nutrients in everyday foods.</p><span class="pill">Open →</span></div>
+<div class="card" onclick="location.hash='#compare'"><h3>2. Food Comparison</h3><p>Compare nutritional values of Indian foods.</p><span class="pill">Open →</span></div>
+<div class="card" onclick="location.hash='#planner'"><h3>3. Smart Meal Planner</h3><p>Affordable meals by your budget.</p><span class="pill">Open →</span></div>
+<div class="card" onclick="location.hash='#substitute'"><h3>4. Food Substitution</h3><p>Economical nutritional alternatives.</p><span class="pill">Open →</span></div>
+</div>
+</section>
+
+<section id="foods">
+<h2>🥗 Know Your Food - Indian Food Database</h2>
+<p class="sub">Search any food. Values and serving sizes are shown as entered in this project dataset. Raw / Cooked / Prepared states are labelled where available. Check the cited food-composition tables before using a value for academic or health decisions.</p>
+<input id="search" placeholder="Search food... e.g. Ragi, Banana, Avocado" oninput="renderFoods()">
+<select id="cat" onchange="renderFoods()">
+<option value="All">All Categories</option>
+<option>Cereals & Millets</option>
+<option>Pulses</option>
+<option>Fruits</option>
+<option>Vegetables</option>
+<option>Nuts & Seeds</option>
+<option>Dairy</option>
+<option>Animal</option>
+<option>Traditional</option>
+</select>
+<p id="apiStatus" style="margin:12px 0;color:#16833B;font-size:14px" role="status" aria-live="polite"></p>
+<div class="grid" id="foodList"></div>
+</section>
+
+<section id="compare">
+<h2>⚖️ Food Comparison</h2>
+<p class="sub">Compare any two foods. Compare the listed reference portions. Serving sizes and preparation states differ, so numbers are not automatically equal-quantity comparisons.</p>
+<div class="flex">
+<div class="box">
+<label>Select First Food</label>
+<select id="f1" onchange="doCompare()"></select>
+<div id="c1"></div>
+</div>
+<div class="box">
+<label>Select Second Food</label>
+<select id="f2" onchange="doCompare()"></select>
+<div id="c2"></div>
+</div>
+</div>
+<div id="compareTable" style="margin-top:16px"></div>
+<div id="compareInsight"></div>
+</section>
+
+<section id="planner">
+<h2>🍱 Smart Meal Planner - Budget Based</h2>
+<p class="sub">Food prices are estimates and may vary depending on location, season, market and availability.</p>
+<div class="flex">
+<div class="box">
+<label>Daily Budget (₹)</label>
+<input id="budget" type="number" value="100">
+<label>Preference</label>
+<select id="pref"><option>Veg</option><option>Non-Veg</option></select>
+<label>Cuisine</label>
+<select id="cuisine"><option>South Indian</option><option>General Indian</option></select>
+<button class="btn" onclick="planMeal()">Generate Meal Plan</button>
+<button class="btn btn2" onclick="planMeal(true)">🔄 Alternative Plan</button>
+</div>
+<div class="box" id="planOut"><p>Click Generate to see Breakfast, Lunch, Snack, Dinner with cost & nutrition.</p></div>
+</div>
+</section>
+
+<section id="substitute">
+<h2>💡 Food Substitution - Affordable Alternatives</h2>
+<div class="flex">
+<div class="box">
+<label>Select Original Food</label>
+<select id="orig" onchange="doSub()">
+<option value="Almonds">Almonds (Expensive)</option>
+<option value="Chicken">Chicken</option>
+<option value="Apple">Apple</option>
+<option value="Milk">Milk (for lactose / cost)</option>
+</select>
+<div id="subOut"></div>
+</div>
+<div class="box">
+<h3>Why Substitute?</h3>
+<p>Alternatives are <b>not nutritionally identical</b>, but they give similar key nutrients at much lower cost and are locally available. Always check protein, iron & calcium differences.</p>
+<p><b>Examples:</b><br>Almonds → Groundnuts<br>Chicken → Soybeans / Green Gram<br>Apple → Banana / Guava<br>Expensive Protein → Pulses</p>
+</div>
+</div>
+</section>
+
+<section id="tracker">
+<h2>📈 Progress Tracker - Learning Dashboard</h2>
+<p class="sub">This tracks food exploration activity only. It does NOT measure health or nutritional status.</p>
+<div class="grid">
+<div class="card"><div class="stat" id="tFood">0</div><p>Foods Explored</p></div>
+<div class="card"><div class="stat" id="tTopic">-</div><p>Topics Learned</p></div>
+</div>
+<button class="btn" style="margin-top:12px;background:#c0392b" onclick="if(confirm('Reset food exploration progress?')){localStorage.removeItem('ns_food');location.reload()}">Reset Progress</button>
+</section>
+
+<section id="sources">
+<h2>📚 Nutrition Data Sources</h2>
+<div class="box">
+<p><b>A. ICMR - NIN, Indian Food Composition Tables, 2017</b><br>
+<a href="https://www.nin.res.in/ebooks/IFCT2017_16122024.pdf" target="_blank">IFCT 2017 PDF</a></p>
+<p><b>B. ICMR - NIN, Dietary Guidelines for Indians, 2024</b><br>
+<a href="https://nin.res.in/dietaryguidelines/pdfjs/locale/DGI_2024.pdf" target="_blank">DGI 2024 PDF</a></p>
+<p><b>C. USDA FoodData Central</b><br>
+<a href="https://fdc.nal.usda.gov/" target="_blank">fdc.nal.usda.gov</a></p>
+<p style="font-size:13px">Data-quality note: The food values currently included are inherited reference estimates. Their exact source entry, food variety, cooking method and portion basis have not been independently audited in this code review. Treat them as educational reference data until each entry is checked against the linked database. ICMR-NIN should be prioritised for Indian foods; USDA may be supplementary. Measured composition is not the same as a dietary recommendation.</p>
+<div class="note"><b>Nutrition Disclaimer:</b> Nutrition values are reference estimates and may vary depending on variety, preparation, growing conditions and serving size. This website provides educational information and does not replace professional medical or dietary advice.</div>
+</div>
+</section>
+
+<section id="about">
+<h2>ℹ️ About Us</h2>
+<div class="box">
+<p>NutriSmart was developed as an <b>SDG 2 educational project</b> after observing that many college and hostel students lack awareness of essential nutrients present in everyday foods.</p>
+<p>Our mission is to make nutrition knowledge simple, accessible and affordable.</p>
+<p>Our goal is to encourage informed food choices through education, food comparison, affordable meal planning and practical nutritional awareness.</p>
+<p><i>NutriSmart is an educational project. It does not diagnose, prevent or cure malnutrition.</i></p>
+</div>
+</section>
+
+<section id="contact">
+<h2>📩 Contact Us</h2>
+<div class="flex">
+<div class="box">
+<p>Email us: <a href="mailto:jaswanthuchiga@gmail.com"><b>jaswanthuchiga@gmail.com</b></a></p>
+<form onsubmit="return sendMsg(event)">
+<input id="cName" placeholder="Name *" required>
+<input id="cEmail" type="email" placeholder="Email *" required>
+<input id="cSub" placeholder="Subject *" required>
+<textarea id="cMsg" placeholder="Message *" required></textarea>
+<button class="btn">Submit</button>
+<p id="cErr" style="color:red"></p>
+<p id="cOk" style="color:green"></p>
+</form>
+</div>
+<div class="box">
+<h3>Project Team</h3>
+<p>NutriSmart - SDG 2 College Project<br>Chennai, Tamil Nadu, India</p>
+</div>
+</div>
+</section>
+
+<footer>
+<p style="font-size:12px;max-width:900px;margin:0 auto 14px;opacity:.9">Educational information only. NutriSmart does not diagnose or treat nutritional deficiencies. For personal dietary or medical advice, consult a qualified professional.</p>
+<h3>NutriSmart</h3>
+<p>Eat Smart. Live Healthy. End Malnutrition.</p>
+<p>SDG 2 - Zero Hunger | Educational Project</p>
+</footer>
+<script>
+// FOOD DATABASE - serving sizes vary by item.
+// Values below are inherited project reference estimates and require item-by-item source verification.
+
+const FOODS=[
+{id:1,n:"Rice (Cooked)",c:"Cereals & Millets",s:"100g Cooked",cal:130,pro:2.7,carb:28,fat:0.3,iron:0.2,calc:10,fib:0.4,src:"ICMR IFCT 2017",d:"Energy staple, low fibre if white rice. Pair with dal for protein."},
+{id:2,n:"Brown Rice (Cooked)",c:"Cereals & Millets",s:"100g Cooked",cal:112,pro:2.6,carb:23,fat:0.9,iron:0.4,calc:10,fib:1.8,src:"ICMR / USDA",d:"More fibre & micronutrients than white rice."},
+{id:3,n:"Ragi / Finger Millet",c:"Cereals & Millets",s:"100g Raw",cal:328,pro:7.3,carb:72,fat:1.3,iron:3.9,calc:344,fib:3.6,src:"ICMR IFCT 2017",d:"A source of calcium; amounts depend on food form and serving."},
+{id:4,n:"Jowar",c:"Cereals & Millets",s:"100g Raw",cal:349,pro:10.4,carb:72,fat:1.9,iron:4.1,calc:25,fib:1.6,src:"ICMR IFCT 2017",d:"Gluten-free, good iron & protein."},
+{id:5,n:"Bajra / Pearl Millet",c:"Cereals & Millets",s:"100g Raw",cal:361,pro:11.6,carb:67,fat:5,iron:8,calc:42,fib:1.2,src:"ICMR IFCT 2017",d:"Contains iron; dietary iron intake is only one factor in anaemia."},
+{id:6,n:"Oats",c:"Cereals & Millets",s:"100g Raw",cal:389,pro:16.9,carb:66,fat:6.9,iron:4.7,calc:54,fib:10.6,src:"USDA",d:"High fibre, keeps full longer."},
+{id:7,n:"Wheat (Whole)",c:"Cereals & Millets",s:"100g Raw",cal:327,pro:11.8,carb:71,fat:1.5,iron:5.3,calc:48,fib:11.2,src:"ICMR IFCT 2017",d:"Chapati base, good fibre."},
+{id:8,n:"Green Gram / Moong Dal",c:"Pulses",s:"100g Raw",cal:334,pro:24,carb:59,fat:1.2,iron:3.9,calc:124,fib:12.4,src:"ICMR IFCT 2017",d:"Easy to digest, affordable protein."},
+{id:9,n:"Chickpeas / Chana",c:"Pulses",s:"100g Raw",cal:360,pro:17,carb:60,fat:5,iron:4.5,calc:190,fib:13.6,src:"ICMR IFCT 2017",d:"High protein + fibre."},
+{id:10,n:"Toor Dal",c:"Pulses",s:"100g Raw",cal:335,pro:22,carb:57,fat:1.5,iron:2.7,calc:73,fib:8.6,src:"ICMR IFCT 2017",d:"Sambar staple, daily protein."},
+{id:11,n:"Red Lentils / Masoor",c:"Pulses",s:"100g Raw",cal:352,pro:25,carb:59,fat:1,iron:7.5,calc:69,fib:11.5,src:"ICMR IFCT 2017",d:"Very high iron."},
+{id:12,n:"Soybeans",c:"Pulses",s:"100g Raw",cal:381,pro:43,carb:22,fat:19,iron:6.5,calc:240,fib:23,src:"ICMR IFCT 2017",d:"Highest plant protein."},
+{id:13,n:"Kidney Beans / Rajma",c:"Pulses",s:"100g Raw",cal:333,pro:22,carb:60,fat:1.4,iron:2.8,calc:100,fib:12.2,src:"ICMR IFCT 2017",d:"Protein + iron."},
+{id:14,n:"Banana",c:"Fruits",s:"1 Medium (100g)",cal:89,pro:1.1,carb:23,fat:0.3,iron:0.3,calc:5,fib:2.6,src:"ICMR IFCT 2017",d:"Cheap instant energy + potassium."},
+{id:15,n:"Apple",c:"Fruits",s:"100g",cal:52,pro:0.3,carb:14,fat:0.2,iron:0.1,calc:6,fib:2.4,src:"USDA",d:"Good fibre, low calorie."},
+{id:16,n:"Mango",c:"Fruits",s:"100g",cal:60,pro:0.8,carb:15,fat:0.4,iron:0.2,calc:11,fib:1.6,src:"ICMR IFCT 2017",d:"Rich Vitamin A."},
+{id:17,n:"Guava",c:"Fruits",s:"100g",cal:68,pro:2.6,carb:14,fat:1,iron:0.3,calc:18,fib:5.4,src:"ICMR IFCT 2017",d:"A vitamin C-rich fruit; price and availability vary."},
+{id:18,n:"Papaya",c:"Fruits",s:"100g",cal:43,pro:0.5,carb:11,fat:0.3,iron:0.3,calc:20,fib:1.7,src:"ICMR IFCT 2017",d:"Good for digestion."},
+{id:19,n:"Amla",c:"Fruits",s:"100g",cal:44,pro:0.5,carb:10,fat:0.1,iron:0.7,calc:25,fib:3.4,src:"ICMR IFCT 2017",d:"A vitamin C-rich fruit; exact content varies."},
+{id:20,n:"Pomegranate",c:"Fruits",s:"100g",cal:83,pro:1.7,carb:19,fat:1.2,iron:0.3,calc:10,fib:4,src:"ICMR IFCT 2017",d:"Contains several nutrients; do not rely on one food to prevent deficiency."},
+{id:21,n:"Spinach (Palak)",c:"Vegetables",s:"100g Raw",cal:23,pro:2.9,carb:3.6,fat:0.4,iron:2.7,calc:99,fib:2.2,src:"ICMR IFCT 2017",d:"Iron + folate, cook lightly."},
+{id:22,n:"Drumstick Leaves",c:"Vegetables",s:"100g Raw",cal:92,pro:9.4,carb:12,fat:1.6,iron:3.4,calc:440,fib:4.8,src:"ICMR IFCT 2017",d:"Contains calcium; compare realistic portions and preparation states."},
+{id:23,n:"Moringa Leaves",c:"Vegetables",s:"100g Raw",cal:64,pro:9.4,carb:8.3,fat:1.4,iron:4,calc:185,fib:2,src:"ICMR IFCT 2017",d:"Super leaf, iron + calcium."},
+{id:24,n:"Carrot",c:"Vegetables",s:"100g Raw",cal:41,pro:0.9,carb:10,fat:0.2,iron:0.3,calc:33,fib:2.8,src:"ICMR IFCT 2017",d:"Vitamin A for eyes."},
+{id:25,n:"Beetroot",c:"Vegetables",s:"100g Raw",cal:43,pro:1.6,carb:10,fat:0.2,iron:0.8,calc:16,fib:2.8,src:"ICMR IFCT 2017",d:"Iron + folate."},
+{id:26,n:"Sweet Potato",c:"Vegetables",s:"100g Boiled",cal:86,pro:1.6,carb:20,fat:0.1,iron:0.6,calc:30,fib:3,src:"USDA",d:"Vitamin A, healthy carb."},
+{id:27,n:"Tomato",c:"Vegetables",s:"100g Raw",cal:18,pro:0.9,carb:3.9,fat:0.2,iron:0.3,calc:10,fib:1.2,src:"ICMR IFCT 2017",d:"Vitamin C + lycopene."},
+{id:28,n:"Groundnuts / Peanuts",c:"Nuts & Seeds",s:"100g Roasted",cal:567,pro:26,carb:16,fat:49,iron:4.6,calc:92,fib:8.5,src:"ICMR IFCT 2017",d:"Cheapest protein nut. Alternative to almonds."},
+{id:29,n:"Almonds",c:"Nuts & Seeds",s:"100g Raw",cal:579,pro:21,carb:22,fat:50,iron:3.7,calc:269,fib:12.5,src:"USDA",d:"High calcium & Vitamin E, but expensive."},
+{id:30,n:"Sesame Seeds",c:"Nuts & Seeds",s:"100g",cal:573,pro:18,carb:23,fat:50,iron:14.6,calc:975,fib:11.8,src:"ICMR IFCT 2017",d:"Extremely high calcium + iron."},
+{id:31,n:"Flaxseeds",c:"Nuts & Seeds",s:"100g",cal:534,pro:18,carb:29,fat:42,iron:5.7,calc:255,fib:27,src:"USDA",d:"Omega-3 + fibre."},
+{id:32,n:"Milk (Cow)",c:"Dairy",s:"100ml",cal:62,pro:3.2,carb:4.8,fat:3.5,iron:0.1,calc:110,fib:0,src:"ICMR IFCT 2017",d:"Calcium + protein."},
+{id:33,n:"Curd",c:"Dairy",s:"100g",cal:61,pro:3.5,carb:4.7,fat:3.3,iron:0.1,calc:110,fib:0,src:"ICMR IFCT 2017",d:"Probiotics + calcium, easier to digest than milk."},
+{id:34,n:"Paneer",c:"Dairy",s:"100g",cal:265,pro:18,carb:6,fat:21,iron:0.4,calc:208,fib:0,src:"ICMR IFCT 2017",d:"High protein vegetarian."},
+{id:35,n:"Egg (Boiled)",c:"Animal",s:"1 Egg 50g",cal:70,pro:6,carb:0.5,fat:5,iron:0.6,calc:25,fib:0,src:"ICMR IFCT 2017",d:"Complete protein, cheapest animal protein."},
+{id:36,n:"Chicken (Cooked)",c:"Animal",s:"100g Cooked",cal:165,pro:31,carb:0,fat:3.6,iron:0.9,calc:15,fib:0,src:"USDA",d:"Lean protein."},
+{id:37,n:"Fish (Rohu, Cooked)",c:"Animal",s:"100g Cooked",cal:120,pro:20,carb:0,fat:4,iron:0.5,calc:50,fib:0,src:"ICMR IFCT 2017",d:"Protein + omega-3."},
+{id:38,n:"Idli (2 pcs)",c:"Traditional",s:"2 pcs ~100g",cal:110,pro:4,carb:22,fat:1,iron:0.6,calc:20,fib:1.5,src:"ICMR Estimate",d:"Steamed, light breakfast."},
+{id:39,n:"Dosa (1)",c:"Traditional",s:"1 Medium",cal:180,pro:4,carb:30,fat:5,iron:0.8,calc:25,fib:1.8,src:"ICMR Estimate",d:"Fermented, good with sambar."},
+{id:40,n:"Sambar (1 bowl)",c:"Traditional",s:"150g Cooked",cal:90,pro:5,carb:15,fat:2,iron:1.2,calc:40,fib:4,src:"ICMR Estimate",d:"Dal + vegetables, balanced."},
+{id:41,n:"Chapati (1)",c:"Traditional",s:"1 (40g)",cal:110,pro:3,carb:20,fat:2,iron:1.2,calc:15,fib:2.5,src:"ICMR Estimate",d:"Whole wheat, fibre."},
+{id:42,n:"Poha",c:"Traditional",s:"100g Cooked",cal:130,pro:2.5,carb:26,fat:2,iron:1.5,calc:18,fib:1.2,src:"ICMR Estimate",d:"Light, iron from lemon + peanuts."},
+{id:43,n:"Pongal",c:"Traditional",s:"100g Cooked",cal:145,pro:5,carb:25,fat:3,iron:1,calc:20,fib:2,src:"ICMR Estimate",d:"Rice + moong dal, protein improved."},
+{id:44,n:"Upma",c:"Traditional",s:"100g Cooked",cal:140,pro:3.5,carb:25,fat:3,iron:1,calc:15,fib:1.8,src:"ICMR Estimate",d:"Rava + vegetables."},
+{id:45,n:"Coconut",c:"Fruits",s:"100g Raw",cal:354,pro:3.3,carb:15,fat:33,iron:2.4,calc:14,fib:9,src:"ICMR IFCT 2017",d:"High fat, use in moderation."},
+{id:46,n:"Buttermilk",c:"Dairy",s:"200ml",cal:40,pro:2,carb:3,fat:1,iron:0.1,calc:80,fib:0,src:"ICMR IFCT 2017",d:"Hydrating, low calorie."},
+{id:47,n:"Amaranth Leaves",c:"Vegetables",s:"100g Raw",cal:23,pro:4,carb:4,fat:0.5,iron:3.8,calc:200,fib:2,src:"ICMR IFCT 2017",d:"Iron + calcium leafy."},
+{id:48,n:"Curry Leaves",c:"Vegetables",s:"100g Raw",cal:108,pro:6,carb:18,fat:1,iron:0.9,calc:830,fib:6.4,src:"ICMR IFCT 2017",d:"Very high calcium, use daily in tadka."}
+];
+
+// PROGRESS TRACKER
+let explored=new Set(JSON.parse(localStorage.getItem('ns_food')||'[]'));
+
+function toggleMenu(){
+  const nav=document.getElementById('mainNav');
+  const btn=document.getElementById('menuToggle');
+  const open=nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded',String(open));
+  btn.textContent=open?'✕':'☰';
+}
+
+document.querySelectorAll('#mainNav a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('mainNav').classList.remove('open');
+  document.getElementById('menuToggle').setAttribute('aria-expanded','false');
+  document.getElementById('menuToggle').textContent='☰';
+}));
+
+function saveProgress(){
+  localStorage.setItem('ns_food',JSON.stringify([...explored]));
+  updateTracker();
+}
+
+function updateTracker(){
+  document.getElementById('tFood').innerText=explored.size;
+  document.getElementById('tTopic').innerText=explored.size>5?'Protein, Iron, Calcium':'Start Exploring';
+}
+
+// USDA FOODDATA CENTRAL API INTEGRATION
+// NutriSmart checks its own food list first, then searches USDA if no local result exists.
+// DEMO_KEY is suitable only for limited testing. Replace it with your own key for regular use.
+
+const USDA_API_KEY = "DEMO_KEY";
+
+let foodSearchRequest = 0;
+let foodSearchTimer = null;
+
+// Prevent HTML injection from external API content.
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+// Get a nutrient value from the USDA response.
+function getUSDAFoodNutrient(food, nutrientName) {
+  const nutrients = food.foodNutrients || [];
+
+  const nutrient = nutrients.find(item =>
+    (item.nutrientName || "").toLowerCase() === nutrientName.toLowerCase()
+  );
+
+  if (!nutrient || nutrient.value == null) {
+    return "Not available";
+  }
+
+  return `${nutrient.value} ${nutrient.unitName || ""}`.trim();
+}
+
+// DISPLAY LOCAL FOOD DATABASE RESULTS
+function renderLocalFoods(list) {
+  document.getElementById("foodList").innerHTML = list.map(f => `
+    <div class="card" onclick="explored.add(${f.id});saveProgress();alert('Added to Progress: ${escapeHTML(f.n)}')">
+      <h3>${escapeHTML(f.n)}</h3>
+
+      <span class="pill">${escapeHTML(f.c)}</span>
+      <span class="pill">${escapeHTML(f.s)}</span>
+
+      <p style="font-size:13px">
+        <b>Cal:</b> ${f.cal} |
+        <b>Protein:</b> ${f.pro}g |
+        <b>Carb:</b> ${f.carb}g |
+        <b>Fat:</b> ${f.fat}g<br>
+
+        <b>Iron:</b> ${f.iron}mg |
+        <b>Calcium:</b> ${f.calc}mg |
+        <b>Fibre:</b> ${f.fib}g
+      </p>
+
+      <p style="font-size:13px">${escapeHTML(f.d)}</p>
+
+      <p style="font-size:11px;color:#888">
+        Dataset source label: ${escapeHTML(f.src)}.
+        Verify the exact entry and preparation state before citation.
+      </p>
+    </div>
+  `).join("");
+}
+
+// SEARCH USDA FOODDATA CENTRAL WHEN LOCAL FOOD IS NOT FOUND
+async function searchExternalFood(query, requestId) {
+  const status = document.getElementById("apiStatus");
+  const foodList = document.getElementById("foodList");
+
+  status.textContent = "Not found in NutriSmart. Searching USDA FoodData Central...";
+  foodList.innerHTML = "<p>Loading external nutrition information...</p>";
+
+  try {
+    const url = new URL("https://api.nal.usda.gov/fdc/v1/foods/search");
+
+    url.searchParams.set("query", query);
+    url.searchParams.set("pageSize", "8");
+    url.searchParams.set("api_key", USDA_API_KEY);
+
+    const response = await fetch(url.toString());
+
+    if (!response.ok) {
+      throw new Error(`USDA API returned ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Ignore old search results if the user has already typed a new query.
+    if (requestId !== foodSearchRequest) return;
+
+    const foods = data.foods || [];
+
+    if (!foods.length) {
+      status.textContent = "No matching food was found in either database. Try another food name.";
+      foodList.innerHTML = "";
+      return;
+    }
+
+    status.textContent = "Showing external results from USDA FoodData Central. Values belong to the selected USDA food record; they may not represent a typical Indian preparation.";
+
+    foodList.innerHTML = foods.map(food => {
+      const name = escapeHTML(food.description || "Unnamed food");
+      const id = escapeHTML(food.fdcId || "Not listed");
+      const dataType = escapeHTML(food.dataType || "USDA record");
+
+      const nutrients = [
+        ["Energy", "Energy"],
+        ["Protein", "Protein"],
+        ["Carbohydrate", "Carbohydrate, by difference"],
+        ["Total fat", "Total lipid (fat)"],
+        ["Iron", "Iron, Fe"],
+        ["Calcium", "Calcium, Ca"],
+        ["Fibre", "Fiber, total dietary"]
+      ];
+
+      const rows = nutrients.map(([label, key]) =>
+        `<tr>
+          <td>${label}</td>
+          <td>${escapeHTML(getUSDAFoodNutrient(food, key))}</td>
+        </tr>`
+      ).join("");
+
+      return `
+        <div class="card" style="cursor:default">
+          <h3>${name}</h3>
+
+          <span class="pill">External database</span>
+          <span class="pill">${dataType}</span>
+
+          <p style="font-size:12px;color:#777;margin:8px 0">
+            USDA Food ID: ${id}
+          </p>
+
+          <table style="margin-top:10px">
+            <tbody>${rows}</tbody>
+          </table>
+
+          <p class="note">
+            This is the nutrient information returned for this USDA record,
+            not necessarily per 100 g for every data type. Check the record's
+            food description, serving basis and preparation state before
+            comparing it with another food.
+          </p>
+        </div>
+      `;
+    }).join("");
+
+  } catch (error) {
+    if (requestId !== foodSearchRequest) return;
+
+    console.error("USDA FoodData Central search failed:", error);
+
+    status.textContent = "The external nutrition database could not be reached. Check your internet connection or API key and try again.";
+
+    foodList.innerHTML = "";
+  }
+}
+
+// MAIN FOOD SEARCH FUNCTION
+function renderFoods() {
+  const q = (document.getElementById("search").value || "").trim();
+  const category = document.getElementById("cat").value;
+  const status = document.getElementById("apiStatus");
+  const foodList = document.getElementById("foodList");
+
+  const requestId = ++foodSearchRequest;
+
+  if (foodSearchTimer) {
+    clearTimeout(foodSearchTimer);
+  }
+
+  const query = q.toLowerCase();
+
+  // FIRST: SEARCH THE BUILT-IN NUTRISMART DATABASE.
+  const localResults = FOODS.filter(food =>
+    (category === "All" || food.c === category) &&
+    food.n.toLowerCase().includes(query)
+  );
+
+  if (localResults.length) {
+    status.textContent = "Showing results from NutriSmart's built-in food database.";
+    renderLocalFoods(localResults);
+    return;
+  }
+
+  // If the search is empty, show all local foods.
+  if (q.length < 2) {
+    status.textContent = q
+      ? "Enter at least two letters to search the external database."
+      : "Showing all foods in the NutriSmart database.";
+
+    if (!q) {
+      renderLocalFoods(FOODS);
+    } else {
+      foodList.innerHTML = "<p>No matching food in the selected local category.</p>";
+    }
+
+    return;
+  }
+
+  // SECOND: SEARCH USDA AFTER NO LOCAL MATCH.
+  // Wait briefly after typing so the API is not called for every keystroke.
+  status.textContent = "No local match. Preparing external search...";
+  foodList.innerHTML = "";
+
+  foodSearchTimer = setTimeout(() => {
+    searchExternalFood(q, requestId);
+  }, 450);
+}
+
+// FOOD COMPARISON
+function fillSelects(){
+  let o=FOODS.map(f=>`<option value="${f.id}">${f.n}</option>`).join('');
+
+  document.getElementById('f1').innerHTML=o;
+  document.getElementById('f2').innerHTML=o.replace('value="2"','value="2" selected');
+  document.getElementById('f2').value=2;
+
+  doCompare();
+}
+
+function cardHTML(f){
+  return `<h3>${f.n}</h3>
+  <p>${f.c} • ${f.s}</p>
+  <p>Cal ${f.cal} | Protein ${f.pro}g | Iron ${f.iron}mg | Calcium ${f.calc}mg</p>`;
+}
+
+function doCompare(){
+  const a=FOODS.find(f=>f.id==document.getElementById('f1').value);
+  const b=FOODS.find(f=>f.id==document.getElementById('f2').value);
+
+  if(!a || !b) return;
+
+  document.getElementById('c1').innerHTML=cardHTML(a);
+  document.getElementById('c2').innerHTML=cardHTML(b);
+
+  document.getElementById('compareTable').innerHTML=`
+  <table>
+    <tr>
+      <th>Nutrient</th>
+      <th>${a.n}</th>
+      <th>${b.n}</th>
+    </tr>
+    <tr><td>Calories</td><td>${a.cal}</td><td>${b.cal}</td></tr>
+    <tr><td>Protein</td><td>${a.pro}g</td><td>${b.pro}g</td></tr>
+    <tr><td>Carbs</td><td>${a.carb}g</td><td>${b.carb}g</td></tr>
+    <tr><td>Fat</td><td>${a.fat}g</td><td>${b.fat}g</td></tr>
+    <tr><td>Fibre</td><td>${a.fib}g</td><td>${b.fib}g</td></tr>
+    <tr><td>Iron</td><td>${a.iron}mg</td><td>${b.iron}mg</td></tr>
+    <tr><td>Calcium</td><td>${a.calc}mg</td><td>${b.calc}mg</td></tr>
+  </table>
+
+  <p style="font-size:12px">
+    Dataset source labels: ${a.src} | ${b.src}.
+    Listed portions: ${a.s} vs ${b.s}.
+    These are not equal portions; verify exact values and compare equivalent
+    weights and preparation states before drawing conclusions.
+  </p>`;
+
+  document.getElementById('compareInsight').innerHTML=`
+  <div class="box">
+    <b>How to interpret:</b>
+    These figures use the listed portions, which may differ in weight and preparation.
+    For a fair comparison, compare the same weight and food state.
+    Neither food is universally better; consider your needs, dietary pattern,
+    affordability and availability.
+  </div>`;
+}
+
+// SMART MEAL PLANNER
+const MEAL_PLANS = {
+  "South Indian": {
+    Veg: [
+      {
+        name:"Everyday balanced",
+        meals:[
+          ["Breakfast","Idli (2) + Sambar",30],
+          ["Lunch","Rice + Toor Dal Sambar + Curd",40],
+          ["Snack","Banana + Buttermilk",15],
+          ["Dinner","Dosa + Sambar",35]
+        ]
+      },
+      {
+        name:"Alternative",
+        meals:[
+          ["Breakfast","Upma + Banana",25],
+          ["Lunch","Ragi Kali + Greens",35],
+          ["Snack","Groundnuts (30 g)",10],
+          ["Dinner","Chapati + Green Gram Curry",30]
+        ]
+      }
+    ],
+    "Non-Veg": [
+      {
+        name:"Everyday balanced",
+        meals:[
+          ["Breakfast","Idli (2) + Sambar",30],
+          ["Lunch","Rice + Egg Curry",45],
+          ["Snack","Banana + Buttermilk",15],
+          ["Dinner","Chapati + Chicken Curry",50]
+        ]
+      },
+      {
+        name:"Alternative",
+        meals:[
+          ["Breakfast","Dosa + Sambar",30],
+          ["Lunch","Rice + Dal + Egg",45],
+          ["Snack","Guava",15],
+          ["Dinner","Chapati + Green Gram Curry",30]
+        ]
+      }
+    ]
+  },
+
+  "General Indian": {
+    Veg: [
+      {
+        name:"Everyday balanced",
+        meals:[
+          ["Breakfast","Chapati + Curd",30],
+          ["Lunch","Rice + Dal + Cabbage",40],
+          ["Snack","Guava",15],
+          ["Dinner","Chapati + Paneer",40]
+        ]
+      },
+      {
+        name:"Alternative",
+        meals:[
+          ["Breakfast","Poha + Groundnuts",25],
+          ["Lunch","Rice + Chana Curry",35],
+          ["Snack","Roasted Chana",10],
+          ["Dinner","Chapati + Soy Curry",30]
+        ]
+      }
+    ],
+    "Non-Veg": [
+      {
+        name:"Everyday balanced",
+        meals:[
+          ["Breakfast","Chapati + Egg",30],
+          ["Lunch","Rice + Dal + Egg Curry",45],
+          ["Snack","Guava",15],
+          ["Dinner","Chapati + Chicken Curry",50]
+        ]
+      },
+      {
+        name:"Alternative",
+        meals:[
+          ["Breakfast","Poha + Groundnuts",25],
+          ["Lunch","Rice + Chana Curry",35],
+          ["Snack","Banana",10],
+          ["Dinner","Rice + Fish Curry",50]
+        ]
+      }
+    ]
+  }
+};
+
+let mealPlanIndex = 0;
+
+function planMeal(alt=false){
+  const budget = Number(document.getElementById('budget').value);
+  const pref = document.getElementById('pref').value;
+  const cuisine = document.getElementById('cuisine').value;
+  const out = document.getElementById('planOut');
+
+  if(!Number.isFinite(budget) || budget <= 0){
+    out.innerHTML = '<p class="note">Please enter a daily budget greater than ₹0.</p>';
+    return;
+  }
+
+  const options = MEAL_PLANS[cuisine][pref];
+
+  mealPlanIndex = alt
+    ? (mealPlanIndex + 1) % options.length
+    : 0;
+
+  const plan = options[mealPlanIndex];
+
+  const total = plan.meals.reduce((sum, meal) => sum + meal[2], 0);
+
+  const rows = plan.meals.map(meal =>
+    `<p><b>${meal[0]}:</b> ${meal[1]}
+    <span class="pill">Est. ₹${meal[2]}</span></p>`
+  ).join('');
+
+  const status = total <= budget
+    ? `<p><b>Estimated total: ₹${total}</b> — within your ₹${budget} budget.</p>`
+    : `<p><b>Estimated total: ₹${total}</b> — over your ₹${budget} budget by ₹${total-budget}. Try the alternative plan or increase the budget.</p>`;
+
+  out.innerHTML = `
+    <h3>${plan.name} • ${pref} • ${cuisine}</h3>
+    ${rows}
+    ${status}
+    <p class="note">
+      Costs are illustrative estimates, not live market prices.
+      They vary by location, season, quantity and shop.
+      This planner does not calculate complete daily nutrient requirements
+      or guarantee a nutritionally adequate diet.
+    </p>`;
+}
+
+// FOOD SUBSTITUTION
+function doSub(){
+  const v = document.getElementById('orig').value;
+
+  const map = {
+    Almonds: `
+      <h3>Possible alternative: Groundnuts</h3>
+      <p>Groundnuts can be a lower-cost option for protein and unsaturated fats.
+      They do not provide the same calcium or vitamin E profile as almonds.</p>
+      <p><b>Practical note:</b> Compare local prices per 100 g and check allergy suitability.
+      Sesame, ragi and dairy foods are other possible calcium sources depending on dietary preference.</p>
+    `,
+
+    Chicken: `
+      <h3>Possible alternatives: Soybeans, green gram or other pulses</h3>
+      <p>Pulses can contribute plant protein and fibre, but their amino-acid profile
+      and nutrient availability differ from chicken. Use cooked-food portions when comparing.</p>
+      <p><b>Practical note:</b> Do not compare raw soybean values directly with cooked chicken values.</p>
+    `,
+
+    Apple: `
+      <h3>Possible alternatives: Guava or banana</h3>
+      <p>Choose fruit based on local price, season and preference.
+      Guava is a useful vitamin C source; banana provides carbohydrate and potassium.
+      They are not nutritionally identical to apple.</p>
+    `,
+
+    Milk: `
+      <h3>Possible alternatives depend on the reason</h3>
+      <p>Curd may suit some people who tolerate it better, but it is still a dairy food.
+      For lactose intolerance or milk allergy, seek suitable fortified alternatives
+      and check their calcium and vitamin B12 labels.</p>
+      <p><b>Important:</b> Sesame or leafy vegetables can contribute calcium
+      but are not one-for-one replacements for milk.</p>
+    `
+  };
+
+  document.getElementById('subOut').innerHTML =
+    `<div style="margin-top:10px">${map[v]}</div>`;
+}
+
+// CONTACT FORM
+function sendMsg(e){
+  e.preventDefault();
+
+  let n=document.getElementById('cName').value.trim();
+  let em=document.getElementById('cEmail').value.trim();
+  let s=document.getElementById('cSub').value.trim();
+  let m=document.getElementById('cMsg').value.trim();
+
+  if(!n||!em||!s||!m){
+    document.getElementById('cErr').innerText='Please fill all required fields.';
+    return false;
+  }
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){
+    document.getElementById('cErr').innerText='Please enter a valid email.';
+    return false;
+  }
+
+  document.getElementById('cErr').innerText='';
+
+  document.getElementById('cOk').innerText=
+    'Demo form only: your message was not sent or stored. Please use the email link to contact the project team. Please email directly to jaswanthuchiga@gmail.com';
+
+  return false;
+}
+
+// INITIALIZE WEBSITE
+renderFoods();
+fillSelects();
+doSub();
+updateTracker();
+
+</script>
+</body>
+</html>
